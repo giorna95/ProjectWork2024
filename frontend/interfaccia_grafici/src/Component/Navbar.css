@@ -1,0 +1,44 @@
+/* src/components/Navbar.css */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Assicura che la navbar sia sopra al resto del contenuto */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+  }
+  
+  .navbar-center {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .navbar-button {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .navbar-button:hover {
+    background-color: #777;
+  }
+  
+  body {
+    /* Aggiusta il padding per il contenuto principale per evitare che sia nascosto dietro la navbar */
+    padding-top: 5rem; /* Altezza della navbar, adatta se necessario */
+  }
+  
