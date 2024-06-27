@@ -1,0 +1,44 @@
+Setup Iniziale
+    Flask App Setup:
+        - Crea un'applicazione Flask denominata app.
+        - Abilita il CORS (Cross-Origin Resource Sharing) per consentire richieste da origini diverse.
+
+Caricamento e Filtraggio dei Dati
+    Caricamento dei Dati:
+        Carica un DataFrame principale (df) da un file CSV stato_lavori.csv, utilizzando pandas.
+        Carica un DataFrame geografico (df_geo) da un file CSV italy_geo.csv, sempre con pandas.
+        Filtra il DataFrame geografico (df_geo_citta) per includere solo le città presenti nel DataFrame principale (df).
+
+Funzione get_regione_data
+    Descrizione:
+        Funzione che restituisce i dati dei lavori per una regione specifica, estratti dal DataFrame principale (df).
+    Parametro:
+        regione: Nome della regione per cui si vogliono ottenere i dati.
+    Operazioni:
+        Filtra il DataFrame principale (df) per la regione specificata.
+        Calcola i conteggi per i lavori in diverse fasi (terminati, in esecuzione, in progettazione) sia per la fibra che per FWA (Fixed Wireless Access).
+        Raggruppa i dati per provincia e li converte in dizionari Python.
+    Output:
+        Restituisce un dizionario contenente i seguenti dati per la regione specificata:
+        terminati_FWA, in_esecuzione_FWA, in_progettazione_FWA
+        terminati_Fibra, in_esecuzione_Fibra, in_progettazione_Fibra
+
+Endpoint API
+    Endpoint /dataTerminati/<regione>:
+        Metodo GET: Restituisce i dati dei lavori terminati per una regione specifica.
+        Utilizza la funzione get_regione_data per ottenere i dati pertinenti.
+        Restituisce i dati in formato JSON.
+
+    Endpoint /dataInProgettazione/<regione>:
+        Metodo GET: Restituisce i dati dei lavori in progettazione per una regione specifica.
+        Utilizza la funzione get_regione_data per ottenere i dati pertinenti.
+        Restituisce i dati in formato JSON.
+
+    Endpoint /dataInEsecuzione/<regione>:
+        Metodo GET: Restituisce i dati dei lavori in esecuzione per una regione specifica.
+        Utilizza la funzione get_regione_data per ottenere i dati pertinenti.
+        Restituisce i dati in formato JSON.
+
+Avvio del Server
+    Avvio dell'Applicazione:
+        Se il file è eseguito direttamente (__name__ == '__main__'), avvia il server Flask in modalità di debug su tutte le interfacce (host='0.0.0.0').

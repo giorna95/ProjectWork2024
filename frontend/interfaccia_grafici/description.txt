@@ -12,7 +12,6 @@
 2. Navbar.js
     Descrizione:
         Questo componente rappresenta la barra di navigazione dell'applicazione.
-        Probabilmente include link o pulsanti per navigare tra le diverse sezioni dell'applicazione o per eseguire azioni specifiche.
 3. GraficoTerminati.js
     Descrizione:
         Questo componente visualizza un grafico a barre dei dati relativi ai lavori terminati per la regione selezionata.

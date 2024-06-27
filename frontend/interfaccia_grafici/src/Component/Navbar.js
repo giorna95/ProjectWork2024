@@ -9,10 +9,6 @@ const Navbar = () => {
       <div className="navbar-center">
         <h1>Progetto BUL</h1>
       </div>
-      <div className="navbar-links">
-        <button className="navbar-button">Home</button>
-        <button className="navbar-button">Autore</button>
-      </div>
     </nav>
   );
 };
