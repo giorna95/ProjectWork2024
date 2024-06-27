@@ -33,6 +33,7 @@ const GraficoInProgettazione = ({ data }) => {
 
 	// Opzioni del grafico
 	const options = {
+		indexAxis: 'y', // Imposta l'asse delle categorie (asse x) come asse y per il grafico orizzontale
 		responsive: true, // Il grafico è responsivo
 		maintainAspectRatio: false, // Mantiene il rapporto d'aspetto per la responsività
 		scales: {
