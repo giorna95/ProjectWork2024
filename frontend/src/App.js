@@ -147,6 +147,7 @@ const App = () => {
 					{dataTerminati && (
 						<>
 							<h4 className="chart-title">Dati dei Lavori Terminati</h4>
+							<div className="chart-title">Questo stato indica che i lavori relativi all'installazione di connessioni FWA o fibra ottica sono completati con successo. Le attività di installazione fisica, configurazione e verifica sono terminate. Gli impianti sono operativi e pronti per essere utilizzati dai clienti o dagli utenti finali.</div>
 							<GraficoTerminati data={dataTerminati} />
 						</>
 					)}
@@ -168,6 +169,7 @@ const App = () => {
 					{dataInProgettazione && (
 						<>
 							<h4 className="chart-title">Dati dei Lavori in Progettazione</h4>
+							<div className="chart-title"><div className="chart-title">Questo stato indica che i lavori relativi all'installazione di connessioni FWA o fibra ottica sono completati con successo. Le attività di installazione fisica, configurazione e verifica sono terminate. Gli impianti sono operativi e pronti per essere utilizzati dai clienti o dagli utenti finali.</div></div>
 							<GraficoInProgettazione data={dataInProgettazione} />
 						</>
 					)}
@@ -189,6 +191,7 @@ const App = () => {
 					{dataInEsecuzione && (
 						<>
 							<h4 className="chart-title">Dati dei Lavori in Esecuzione</h4>
+							<div className="chart-title"><div className="chart-title">Questo stato indica che i lavori relativi all'installazione di connessioni FWA o fibra ottica sono completati con successo. Le attività di installazione fisica, configurazione e verifica sono terminate. Gli impianti sono operativi e pronti per essere utilizzati dai clienti o dagli utenti finali.</div></div>
 							<GraficoInEsecuzione data={dataInEsecuzione} />
 						</>
 					)}

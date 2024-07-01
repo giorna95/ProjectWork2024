@@ -1,5 +1,5 @@
 # Usa un'immagine di base con Node.js
-FROM node:14-slim 
+FROM node:14-slim
 
 # Imposta la directory di lavoro all'interno del container
 WORKDIR /app
