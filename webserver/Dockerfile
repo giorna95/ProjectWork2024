@@ -14,7 +14,7 @@ COPY pcn_route.csv .
 RUN pip install flask pandas flask-cors
 
 # Espone la porta 5000 del container
-EXPOSE 5000
+#EXPOSE 5000
 
 # Comando di avvio del server Flask
 CMD ["python", "webserver.py"]

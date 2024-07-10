@@ -16,7 +16,7 @@ ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 const GraficoTerminati = ({ data }) => {
   // Dati del grafico
   const chartData = {
-    labels: Object.keys(data.terminati_FWA), // Etichette dal dato terminati_FWA
+    labels: Object.keys(data.terminati_FWA), // Etichette delle province
     datasets: [
       {
         label: "Terminati FWA", // Etichetta per il dataset di FWA terminati
@@ -44,11 +44,16 @@ const GraficoTerminati = ({ data }) => {
         beginAtZero: true, // Inizia l'asse y da zero
       },
     },
+    plugins: {
+      legend: {
+        position: "top", // Posizione della legenda in alto
+      },
+    },
   };
 
   // Renderizza il componente del grafico
   return (
-    <div style={{ position: "relative", width: "100%", height: "200px" }}>
+    <div style={{ position: "relative", width: "100%", height: "400px" }}>
       <Bar data={chartData} options={options} />
     </div>
   );

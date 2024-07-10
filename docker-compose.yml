@@ -17,7 +17,7 @@ services:
     ports:
       - "5000:5000"
     networks:
-      - app-network
+      - app-network    
 
   nginx:
     image: nginx:latest
@@ -29,6 +29,7 @@ services:
       - frontend
     networks:
       - app-network
+
 
 networks:
   app-network:

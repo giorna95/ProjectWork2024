@@ -23,21 +23,34 @@ df_geo_citta = df_geo_citta[df_geo_citta_filter]
 def get_regione_data(regione):
     df_regione = df[df['Regione'] == regione]
 
-    terminati_FWA = df_regione[(df_regione['Stato FWA'].str.contains(str_term, na=False)) & (df_regione['Piano FWA (anno)'] == 2022)]['Provincia'].value_counts()
-    in_esecuzione_FWA = df_regione[(df_regione['Stato FWA'].str.contains(str_esec, na=False)) & (df_regione['Piano FWA (anno)'] == 2022)]['Provincia'].value_counts()
-    in_progettazione_FWA = df_regione[(df_regione['Stato FWA'].str.contains(str_prog, na=False)) & (df_regione['Piano FWA (anno)'] == 2022)]['Provincia'].value_counts()
+    # Otteniamo tutte le province della regione specificata
+    province_regione = df_regione['Provincia'].unique()
 
-    terminati_Fibra = df_regione[(df_regione['Stato Fibra'].str.contains(str_term, na=False)) & (df_regione['Piano fibra (anno)'] == 2022)]['Provincia'].value_counts()
-    in_esecuzione_Fibra = df_regione[(df_regione['Stato Fibra'].str.contains(str_esec, na=False)) & (df_regione['Piano fibra (anno)'] == 2022)]['Provincia'].value_counts()
-    in_progettazione_Fibra = df_regione[(df_regione['Stato Fibra'].str.contains(str_prog, na=False)) & (df_regione['Piano fibra (anno)'] == 2022)]['Provincia'].value_counts()
+    # Inizializziamo i contatori per ogni stato con tutte le province della regione
+    terminati_FWA = {province: 0 for province in province_regione}
+    in_esecuzione_FWA = {province: 0 for province in province_regione}
+    in_progettazione_FWA = {province: 0 for province in province_regione}
+
+    terminati_Fibra = {province: 0 for province in province_regione}
+    in_esecuzione_Fibra = {province: 0 for province in province_regione}
+    in_progettazione_Fibra = {province: 0 for province in province_regione}
+
+    # Aggiorniamo i contatori con i dati effettivi della regione
+    terminati_FWA.update(df_regione[(df_regione['Stato FWA'].str.contains(str_term, na=False)) & (df_regione['Piano FWA (anno)'] == 2022)]['Provincia'].value_counts().to_dict())
+    in_esecuzione_FWA.update(df_regione[(df_regione['Stato FWA'].str.contains(str_esec, na=False)) & (df_regione['Piano FWA (anno)'] == 2022)]['Provincia'].value_counts().to_dict())
+    in_progettazione_FWA.update(df_regione[(df_regione['Stato FWA'].str.contains(str_prog, na=False)) & (df_regione['Piano FWA (anno)'] == 2022)]['Provincia'].value_counts().to_dict())
+
+    terminati_Fibra.update(df_regione[(df_regione['Stato Fibra'].str.contains(str_term, na=False)) & (df_regione['Piano fibra (anno)'] == 2022)]['Provincia'].value_counts().to_dict())
+    in_esecuzione_Fibra.update(df_regione[(df_regione['Stato Fibra'].str.contains(str_esec, na=False)) & (df_regione['Piano fibra (anno)'] == 2022)]['Provincia'].value_counts().to_dict())
+    in_progettazione_Fibra.update(df_regione[(df_regione['Stato Fibra'].str.contains(str_prog, na=False)) & (df_regione['Piano fibra (anno)'] == 2022)]['Provincia'].value_counts().to_dict())
 
     return {
-        'terminati_FWA': terminati_FWA.to_dict(),
-        'in_esecuzione_FWA': in_esecuzione_FWA.to_dict(),
-        'in_progettazione_FWA': in_progettazione_FWA.to_dict(),
-        'terminati_Fibra': terminati_Fibra.to_dict(),
-        'in_esecuzione_Fibra': in_esecuzione_Fibra.to_dict(),
-        'in_progettazione_Fibra': in_progettazione_Fibra.to_dict()
+        'terminati_FWA': terminati_FWA,
+        'in_esecuzione_FWA': in_esecuzione_FWA,
+        'in_progettazione_FWA': in_progettazione_FWA,
+        'terminati_Fibra': terminati_Fibra,
+        'in_esecuzione_Fibra': in_esecuzione_Fibra,
+        'in_progettazione_Fibra': in_progettazione_Fibra
     }
 
 # Endpoint per ottenere i dati dei lavori terminati per una regione specifica
