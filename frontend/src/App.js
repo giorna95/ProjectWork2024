@@ -56,7 +56,7 @@ const App = () => {
 		if (region) {
 			try {
 				const response = await axios.get(
-					`http://localhost:5000/dataTerminati/${region}`
+					`http://localhost:80/api/dataTerminati/${region}`
 				);
 				setDataTerminati(response.data);
 			} catch (error) {
@@ -69,7 +69,7 @@ const App = () => {
 		if (regionForSecondChart) {
 			try {
 				const response = await axios.get(
-					`http://localhost:5000/dataInProgettazione/${regionForSecondChart}`
+					`http://localhost:80/api/dataInProgettazione/${regionForSecondChart}`
 				);
 				setDataInProgettazione(response.data);
 			} catch (error) {
@@ -82,7 +82,7 @@ const App = () => {
 		if (regionForThirdChart) {
 			try {
 				const response = await axios.get(
-					`http://localhost:5000/dataInEsecuzione/${regionForThirdChart}`
+					`http://localhost:80/api/dataInEsecuzione/${regionForThirdChart}`
 				);
 				setDataInEsecuzione(response.data);
 			} catch (error) {

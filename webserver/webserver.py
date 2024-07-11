@@ -36,13 +36,13 @@ def get_regione_data(regione):
     in_progettazione_Fibra = {province: 0 for province in province_regione}
 
     # Aggiorniamo i contatori con i dati effettivi della regione
-    terminati_FWA.update(df_regione[(df_regione['Stato FWA'].str.contains(str_term, na=False)) & (df_regione['Piano FWA (anno)'] == 2022)]['Provincia'].value_counts().to_dict())
-    in_esecuzione_FWA.update(df_regione[(df_regione['Stato FWA'].str.contains(str_esec, na=False)) & (df_regione['Piano FWA (anno)'] == 2022)]['Provincia'].value_counts().to_dict())
-    in_progettazione_FWA.update(df_regione[(df_regione['Stato FWA'].str.contains(str_prog, na=False)) & (df_regione['Piano FWA (anno)'] == 2022)]['Provincia'].value_counts().to_dict())
+    terminati_FWA.update(df_regione[(df_regione['Stato FWA'].str.contains(str_term, na=False))]['Provincia'].value_counts().to_dict())
+    in_esecuzione_FWA.update(df_regione[(df_regione['Stato FWA'].str.contains(str_esec, na=False))]['Provincia'].value_counts().to_dict())
+    in_progettazione_FWA.update(df_regione[(df_regione['Stato FWA'].str.contains(str_prog, na=False))]['Provincia'].value_counts().to_dict())
 
-    terminati_Fibra.update(df_regione[(df_regione['Stato Fibra'].str.contains(str_term, na=False)) & (df_regione['Piano fibra (anno)'] == 2022)]['Provincia'].value_counts().to_dict())
-    in_esecuzione_Fibra.update(df_regione[(df_regione['Stato Fibra'].str.contains(str_esec, na=False)) & (df_regione['Piano fibra (anno)'] == 2022)]['Provincia'].value_counts().to_dict())
-    in_progettazione_Fibra.update(df_regione[(df_regione['Stato Fibra'].str.contains(str_prog, na=False)) & (df_regione['Piano fibra (anno)'] == 2022)]['Provincia'].value_counts().to_dict())
+    terminati_Fibra.update(df_regione[(df_regione['Stato Fibra'].str.contains(str_term, na=False))]['Provincia'].value_counts().to_dict())
+    in_esecuzione_Fibra.update(df_regione[(df_regione['Stato Fibra'].str.contains(str_esec, na=False))]['Provincia'].value_counts().to_dict())
+    in_progettazione_Fibra.update(df_regione[(df_regione['Stato Fibra'].str.contains(str_prog, na=False))]['Provincia'].value_counts().to_dict())
 
     return {
         'terminati_FWA': terminati_FWA,
@@ -54,7 +54,7 @@ def get_regione_data(regione):
     }
 
 # Endpoint per ottenere i dati dei lavori terminati per una regione specifica
-@app.route('/dataTerminati/<regione>', methods=['GET'])
+@app.route('/api/dataTerminati/<regione>', methods=['GET'])
 def get_data_terminati(regione):
     regione_data = get_regione_data(regione)
     data = {
@@ -64,7 +64,7 @@ def get_data_terminati(regione):
     return jsonify(data)
 
 # Endpoint per ottenere i dati dei lavori in progettazione per una regione specifica
-@app.route('/dataInProgettazione/<regione>', methods=['GET'])
+@app.route('/api/dataInProgettazione/<regione>', methods=['GET'])
 def get_data_in_progettazione(regione):
     regione_data = get_regione_data(regione)
     data = {
@@ -74,7 +74,7 @@ def get_data_in_progettazione(regione):
     return jsonify(data)
 
 # Endpoint per ottenere i dati dei lavori in esecuzione per una regione specifica
-@app.route('/dataInEsecuzione/<regione>', methods=['GET'])
+@app.route('/api/dataInEsecuzione/<regione>', methods=['GET'])
 def get_data_in_esecuzione(regione):
     regione_data = get_regione_data(regione)
     data = {

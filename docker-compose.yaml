@@ -5,19 +5,19 @@ services:
     image: projectwork2024-frontend
     build:
       context: ./frontend
-    ports:
-      - "3000"
     networks:
       - app-network
+    deploy:
+      replicas: 3
 
   webserver:
     image: projectwork2024-webserver
     build:
       context: ./webserver
-    ports:
-      - "5000:5000"
     networks:
-      - app-network    
+      - app-network
+    deploy:
+      replicas: 3    
 
   nginx:
     image: nginx:latest
@@ -27,9 +27,9 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - frontend
+      - webserver
     networks:
       - app-network
-
 
 networks:
   app-network:
