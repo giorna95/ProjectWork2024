@@ -1,17 +1,16 @@
-/* src/components/Navbar.css */
-
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000; /* Assicura che la navbar sia sopra al resto del contenuto */
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
+  background-color: #2236ee;
   color: #fff;
   padding: 1rem;
+  border-radius: 0 0 20px 20px; /* Applica la stonatura solo ai bordi inferiori */
 }
 
 .navbar-center {
@@ -21,7 +20,7 @@
 
 .navbar-right {
   margin-left: auto;
-  text-align: right;
+  text-align: center;
   padding-right: 1rem;
 }
 
@@ -40,9 +39,9 @@
 }
 
 .navbar-button:hover {
-  background-color: #777;
+  background-color: #5a0606;
 }
 
 body {
-  padding-top: 5rem;
+  padding-top: 5rem; 
 }
